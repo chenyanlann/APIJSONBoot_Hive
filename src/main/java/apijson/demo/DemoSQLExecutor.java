@@ -137,6 +137,11 @@ public class DemoSQLExecutor extends APIJSONSQLExecutor {
 		super.setTransactionIsolation(transactionIsolation);
 	}
 
+	@Override
+	public void commit() throws SQLException {
+		Log.d("\n\nAbstractSQLExecutor", "<<<<<<<<<<<<<< TRANSACTION commit >>>>>>>>>>>>>>>>>>>>>>> \n\n");
+	}
+
 	// 取消注释支持 !key 反选字段 和 字段名映射，需要先依赖插件 https://github.com/APIJSON/apijson-column
 	//	@Override
 	//	protected String getKey(SQLConfig config, ResultSet rs, ResultSetMetaData rsmd, int tablePosition, JSONObject table,
