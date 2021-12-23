@@ -24,7 +24,7 @@ IntelliJ IDEA导入：
 
 ### 2.导入表文件到数据库，修改数据库配置
 
-后端需要Hive，安装之后可以使用clickhouse.sql脚本建表和导入数据。
+后端需要Hive，安装之后可以使用hive.sql脚本建表和导入数据。
 [安装参考官方文档](https://cwiki.apache.org/confluence/display/Hive/Home)
 
 修改DemoSQLConfig源码，配置自己的数据库
