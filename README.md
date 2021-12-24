@@ -73,3 +73,7 @@ SpringBoot默认端口8110
 ![image-20211221174603741](README.assets/image-20211221174603741.png)
 
 ![image-20211221174659499](README.assets/image-20211221174659499.png)
+
+### APIAUTO回归测试
+
+![APIAUTO截图](README.assets/APIAUTO截图.png)
