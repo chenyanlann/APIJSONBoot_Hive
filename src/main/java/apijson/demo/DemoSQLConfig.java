@@ -150,8 +150,23 @@ public class DemoSQLConfig extends APIJSONSQLConfig {
 		return sql;
 	}
 
+	@Override
+	public String getJoinString() throws Exception {
+		String pre = super.getJoinString();
+		pre = pre.replace("LEFT", "LEFT OUTER").replace("RIGHT", "RIGHT OUTER");
+		return pre;
+	}
 
-
+	@Override
+	public String getRegExpString(String key, String value, boolean ignoreCase) {
+		if (this.isPostgreSQL()) {
+			return this.getKey(key) + " ~" + (ignoreCase ? "* " : " ") + this.getValue(value);
+		} else if (this.isOracle()) {
+			return "regexp_like(" + this.getKey(key) + ", " + this.getValue(value) + (ignoreCase ? ", 'i'" : ", 'c'") + ")";
+		} else {
+			return (ignoreCase ? "lower(" : "") + this.getKey(key) + (ignoreCase ? ")" : "") + " REGEXP " + (ignoreCase ? "lower(" : "") + this.getValue(value) + (ignoreCase ? ")" : "");
+		}
+	}
 
 	// 如果 DemoSQLExecutor.getConnection 能拿到连接池的有效 Connection，则这里不需要配置 dbVersion, dbUri, dbAccount, dbPassword
 
